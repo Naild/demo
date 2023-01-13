@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine-slim
+    environment:
+      - VIRTUAL_HOST=demo.dev.local
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/app
+    networks:
+      - default
+      - web
+  php:
+    image: naild/phpdev:latest
+    volumes:
+      - .:/app
+
+networks:
+  web:
+    external: true

@@ -7,4 +7,6 @@ RUN groupadd -g 1000 app && \
         git \
         bash-completion
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 USER app
+WORKDIR /app

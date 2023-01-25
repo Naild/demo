@@ -15,6 +15,9 @@ services:
     image: naild/phpdev:latest
     volumes:
       - .:/app
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
 networks:
   web:
